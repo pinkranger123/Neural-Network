@@ -1,0 +1,39 @@
+﻿Output - 5 fold : 
+
+
+<ipython-input-5-64dadf246e77>:31: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
+<ipython-input-5-64dadf246e77>:48: RuntimeWarning: invalid value encountered in multiply
+  hidden_delta = hidden_error * self.sigmoid_derivative(hidden_output)
+Hidden Neurons: 3, Learning Rate: 0.01, Mean Absolute Error: nan
+Hidden Neurons: 3, Learning Rate: 0.001, Mean Absolute Error: 0.4404
+Hidden Neurons: 3, Learning Rate: 0.0001, Mean Absolute Error: 0.5609
+Hidden Neurons: 4, Learning Rate: 0.01, Mean Absolute Error: nan
+Hidden Neurons: 4, Learning Rate: 0.001, Mean Absolute Error: 0.4184
+Hidden Neurons: 4, Learning Rate: 0.0001, Mean Absolute Error: 0.5793
+Hidden Neurons: 5, Learning Rate: 0.01, Mean Absolute Error: nan
+Hidden Neurons: 5, Learning Rate: 0.001, Mean Absolute Error: 0.3214
+Hidden Neurons: 5, Learning Rate: 0.0001, Mean Absolute Error: 0.4429
+
+
+
+
+Output - 10 fold : 
+
+
+<ipython-input-6-9c98dc745249>:31: RuntimeWarning: overflow encountered in exp
+  return 1 / (1 + np.exp(-x))
+<ipython-input-6-9c98dc745249>:48: RuntimeWarning: invalid value encountered in multiply
+  hidden_delta = hidden_error * self.sigmoid_derivative(hidden_output)
+Hidden Neurons: 3, Learning Rate: 0.01, Mean Absolute Error: nan
+Hidden Neurons: 3, Learning Rate: 0.001, Mean Absolute Error: 0.4796
+Hidden Neurons: 3, Learning Rate: 0.0001, Mean Absolute Error: 0.5336
+Hidden Neurons: 4, Learning Rate: 0.01, Mean Absolute Error: nan
+Hidden Neurons: 4, Learning Rate: 0.001, Mean Absolute Error: 0.4075
+Hidden Neurons: 4, Learning Rate: 0.0001, Mean Absolute Error: 0.3996
+Hidden Neurons: 5, Learning Rate: 0.01, Mean Absolute Error: nan
+Hidden Neurons: 5, Learning Rate: 0.001, Mean Absolute Error: 0.3701
+Hidden Neurons: 5, Learning Rate: 0.0001, Mean Absolute Error: 0.3435
+
+
+NaN (Not a Number) is usually used to indicate an error condition for a function that should return a valid number but it can be converted to 0 using JavaScript.
