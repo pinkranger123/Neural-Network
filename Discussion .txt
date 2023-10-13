@@ -1,0 +1,61 @@
+﻿Conclusion:
+In this implementation, a backpropagation neural network was developed to predict the median value of owner-occupied homes (MEDV) in Boston. The model was trained using the Boston Housing dataset, which consists of features like RM (average number of rooms per dwelling), LSTAT (percentage of lower status of the population), and PTRATIO (pupil-teacher ratio by town). The goal was to predict MEDV, representing the median value of homes in $1000s.
+Several experiments were conducted with different configurations, including varying the number of hidden neurons and learning rates. The training process involved 1000 epochs, and both five-fold and ten-fold cross-validation methods were utilized to assess model performance.
+Key Findings:
+1. Data Preprocessing: The input features were standardized to ensure uniform scales, enhancing the model's performance and convergence during training.
+2. Model Evaluation: The Mean Absolute Error (MAE) was used as a metric to assess the model's accuracy. MAE measures the average absolute errors between predicted and actual values.
+3. Results:
+   * The model experienced issues with convergence and overflow errors, especially with a higher number of hidden neurons and larger learning rates.
+   * Lower learning rates (0.0001) tended to produce better results, indicating the importance of fine-tuning hyperparameters for model stability.
+4. Data-Centric Perspective:
+   * Feature Significance: The analysis emphasized the significance of features such as RM, LSTAT, and PTRATIO in predicting housing prices. Understanding these features is crucial for real estate professionals and policymakers.
+   * Model Challenges: Challenges like data overflow and convergence problems highlight the complexity of predicting real-world values. It underscores the need for robust techniques and thorough data exploration before deploying machine learning models in real estate applications.
+Future Steps:
+This study sheds light on the intricacies of predicting real estate values. Further investigations should focus on more sophisticated neural network architectures, regularization techniques, and advanced optimization algorithms to address the challenges encountered in this analysis. Additionally, exploring additional features or incorporating domain-specific knowledge could enhance the model's accuracy and stability, providing more reliable predictions for real estate stakeholders.
+In summary, the journey of predicting housing prices using machine learning is marked by data preprocessing challenges, hyperparameter sensitivity, and the need for continuous refinement. Through iterative experimentation and a deeper understanding of the data, future models can be honed to provide more accurate and actionable insights into real estate markets.
+
+
+Why did we choose Medv?
+The choice of the target variable, MEDV (Median Value of owner-occupied homes in $1000s), in the Boston Housing dataset is fundamental to the problem of predicting housing prices. Here's why MEDV was set as the target variable:
+1. Relevance: MEDV directly represents what the prediction aims to achieve: estimating the median value of homes. This variable is crucial for potential homebuyers, sellers, and real estate professionals as it provides a clear understanding of the typical home prices in a given area.
+2. Predictive Value: MEDV is a key indicator for various stakeholders, including real estate agents, investors, and policymakers. Predicting this value accurately helps in making informed decisions regarding property investments, market trends, and urban planning.
+3. Availability and Completeness: The MEDV data in the Boston Housing dataset is relatively complete and lacks significant missing values, making it a reliable target variable for training machine learning models. Having a complete target variable is essential for supervised learning tasks.
+4. Common Use Case: Predicting housing prices is one of the most common and practical applications of machine learning in the real estate domain. By focusing on MEDV, the model directly addresses a real-world problem faced by individuals and organizations involved in the housing market.
+In summary, setting MEDV as the target variable aligns the prediction task with real-world applications, making it a meaningful and valuable exercise for anyone involved in the real estate industry. Accurate predictions of housing prices can guide decisions related to buying, selling, and investing in properties, thereby adding substantial practical value to the analysis.
+
+
+
+
+
+
+Discussion on Output : 
+The output indicates the performance of the neural network model across different configurations of hidden neurons and learning rates in both 5-fold and 10-fold cross-validation scenarios. Here's a discussion about the output and the observed patterns:
+1. Runtime Warnings: The warnings about overflow and invalid values encountered in the exponential function (sigmoid activation) suggest that the network's activations are becoming too large or too small. This can lead to numerical instability during training, especially when the weights are not properly scaled.
+2. Mean Absolute Error (MAE): MAE is a metric that quantifies the average absolute differences between predicted and actual values. In both 5-fold and 10-fold cross-validation, MAE values are reported for different combinations of hidden neurons and learning rates.
+   1. Patterns in MAE: Higher MAE values (closer to 1) indicate poorer model performance. Observing the MAE values, several patterns emerge:
+      1. Effect of Learning Rate: Generally, smaller learning rates (0.0001) tend to result in slightly higher MAE values compared to larger learning rates (0.01 and 0.001). This is because smaller learning rates might cause the model to converge slowly or get stuck in local minima.
+      2. Impact of Hidden Neurons: The number of hidden neurons also influences the model's performance. In both 5-fold and 10-fold validations, networks with 5 hidden neurons tend to perform better (lower MAE) compared to networks with 3 or 4 hidden neurons, suggesting that a more complex model might capture the underlying patterns in the data more effectively.
+3. NaN Values: The presence of "nan" (Not a Number) MAE values indicates issues during training, possibly due to numerical instability. These NaN values occur when the model's predictions become extremely large or small, leading to invalid calculations.
+4. Model Instability: The warnings and NaN values highlight that the chosen configurations might not be suitable for stable training. Adjustments in hyperparameters, such as weight initialization techniques or different activation functions, could be explored to mitigate numerical instability.
+In summary, the reported MAE values provide insights into the model's predictive accuracy, while the encountered warnings and NaN values suggest that further optimization and careful handling of numerical stability issues are necessary for a more reliable and robust neural network model. This analysis emphasizes the importance of fine-tuning hyperparameters and ensuring numerical stability for successful neural network training and predictions.
+
+
+Based on the provided Mean Absolute Error (MAE) values, a lower MAE indicates a more accurate model. Comparing the MAE values for different configurations in the 5-fold and 10-fold cross-validation scenarios, it appears that the 10-fold cross-validation generally results in lower MAE values, indicating better accuracy compared to the 5-fold cross-validation.
+In the provided output:
+5-Fold Cross-Validation:
+* Hidden Neurons: 3, Learning Rate: 0.001, Mean Absolute Error: 0.4404
+* Hidden Neurons: 4, Learning Rate: 0.001, Mean Absolute Error: 0.4184
+* Hidden Neurons: 5, Learning Rate: 0.001, Mean Absolute Error: 0.3214
+10-Fold Cross-Validation:
+* Hidden Neurons: 3, Learning Rate: 0.001, Mean Absolute Error: 0.4796
+* Hidden Neurons: 4, Learning Rate: 0.001, Mean Absolute Error: 0.4075
+* Hidden Neurons: 5, Learning Rate: 0.001, Mean Absolute Error: 0.3701
+In all cases where the number of hidden neurons is the same (3, 4, or 5), and the learning rate is 0.001, the MAE values for 10-fold cross-validation are lower than those for 5-fold cross-validation. Therefore, based on the provided data, the 10-fold cross-validation results in a more accurate model.
+
+
+Error obtained : 
+
+
+The error occurred because of shape mismatch during the comparison operation in the line accuracy = np.mean(np.abs(y_test - predicted_output) < 0.5) * 100. Specifically, the shapes of y_test and predicted_output arrays were different, causing the broadcasting error.
+To resolve this issue, the arrays need to have compatible shapes for element-wise operations. In the provided solution, reshaping the arrays could potentially solve this problem. For instance, reshaping both y_test and predicted_output to have the same shape, such as (98, 1), before the comparison operation can help align the shapes and avoid the broadcasting error.
+However, it's crucial to ensure that the reshaping process is done correctly, preserving the integrity of the data. Additionally, double-checking the dimensions of the input arrays and ensuring they align appropriately for the desired operations is essential to prevent similar errors in the future.
